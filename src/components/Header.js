@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 
 class Header extends Component {
@@ -24,6 +25,18 @@ class Header extends Component {
         <p data-testid="header-user-name">
           {name}
         </p>
+
+        <ul>
+          <li>
+            <NavLink to="/search" data-testid="link-to-search">Search</NavLink>
+          </li>
+          <li>
+            <NavLink to="/favorites" data-testid="link-to-favorites">Favorites</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile" data-testid="link-to-profile">Profile</NavLink>
+          </li>
+        </ul>
       </header>
     );
   }
