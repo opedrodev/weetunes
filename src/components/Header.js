@@ -28,13 +28,13 @@ class Header extends Component {
 
         <ul>
           <li>
-            <NavLink to="/search" data-testid="link-to-search">Search</NavLink>
+            <NavLink to="/search" data-testid="link-to-search">Pesquisar</NavLink>
           </li>
           <li>
-            <NavLink to="/favorites" data-testid="link-to-favorites">Favorites</NavLink>
+            <NavLink to="/favorites" data-testid="link-to-favorites">Favoritos</NavLink>
           </li>
           <li>
-            <NavLink to="/profile" data-testid="link-to-profile">Profile</NavLink>
+            <NavLink to="/profile" data-testid="link-to-profile">Perfil</NavLink>
           </li>
         </ul>
       </header>
