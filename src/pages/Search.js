@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import SearchForm from '../components/SearchForm';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
@@ -12,6 +13,7 @@ class Search extends Component {
       searched: '',
       disabled: true,
       showInfo: false,
+      noResults: false,
       searchResults: [],
     };
   }
@@ -25,6 +27,8 @@ class Search extends Component {
     const { search } = this.state;
 
     searchAlbumsAPI(search).then((response) => {
+      if (response.length === 0) this.setState({ noResults: true });
+
       this.setState({ searchResults: response });
     });
 
@@ -32,32 +36,17 @@ class Search extends Component {
   };
 
   render() {
-    const { search, searched, disabled, searchResults, showInfo } = this.state;
+    const { search, searched, disabled, searchResults, showInfo, noResults } = this.state;
     return (
       <div data-testid="page-search">
         <Header />
 
-        <form>
-          <input
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Nome do Artista"
-            autoComplete="off"
-            value={ search }
-            onChange={ this.handleInputChange }
-            data-testid="search-artist-input"
-          />
-
-          <button
-            type="button"
-            disabled={ disabled }
-            onClick={ this.handleSearchButtonClick }
-            data-testid="search-artist-button"
-          >
-            Pesquisar
-          </button>
-        </form>
+        <SearchForm
+          search={ search }
+          disabled={ disabled }
+          handleInputChange={ this.handleInputChange }
+          handleSearchButtonClick={ this.handleSearchButtonClick }
+        />
 
         {
           showInfo && (
@@ -70,7 +59,7 @@ class Search extends Component {
         }
 
         {
-          searchResults.length === 0 ? <p>Nenhum álbum foi encontrado</p>
+          noResults && searchResults.length === 0 ? <p>Nenhum álbum foi encontrado</p>
             : (
               searchResults.map((item) => (
                 <div key={ item.collectionId }>

@@ -30,7 +30,7 @@ class Login extends Component {
     createUser({ name })
       .then(() => history.push('/search'));
 
-    createUser({ name });
+    // createUser({ name });
   };
 
   render() {
