@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { createUser } from '../services/userAPI';
+
+import logo from '../assets/weetunes-logo.png';
+import Loading from '../components/Loading';
+import '../styles/Login.scss';
 
 class Login extends Component {
   constructor() {
     super();
+
     this.state = {
       name: '',
       disabled: true,
@@ -12,15 +17,22 @@ class Login extends Component {
     };
   }
 
+  /**
+   * Verify if the input length is greater than 2 and set the state `disabled` to false if it is.
+   * @param {Object} event - Input change event.
+   */
   handleInputChange = ({ target }) => {
     const { name, value } = target;
-    const MIN_LENGTH = 3;
+    const MIN_LENGTH = 2;
     this.setState({
       [name]: value,
-      disabled: value.length < MIN_LENGTH,
+      disabled: value.length <= MIN_LENGTH,
     });
   };
 
+  /**
+   * Create a new user and save it in the localStorage. And redirect to the search page.
+   */
   handleButtonClick = () => {
     const { name } = this.state;
     const { history } = this.props;
@@ -34,27 +46,38 @@ class Login extends Component {
   render() {
     const { disabled, loading } = this.state;
 
-    if (loading) return <p>Carregando...</p>;
-
     return (
-      <div data-testid="page-login">
-        <input
-          type="text"
-          name="name"
-          id="name"
-          autoComplete="off"
-          onChange={ this.handleInputChange }
-          data-testid="login-name-input"
-        />
-        <button
-          type="button"
-          disabled={ disabled }
-          onClick={ this.handleButtonClick }
-          data-testid="login-submit-button"
-        >
-          Entrar
-        </button>
-      </div>
+      <section className="login">
+        <div className="login__card">
+          <div className="login__card__logo">
+            <img src={ logo } alt="trybetunes logo" />
+            <h1>weeTunes</h1>
+          </div>
+
+          {
+            loading ? <Loading /> : (
+              <>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  autoComplete="off"
+                  placeholder="What's your name?"
+                  onChange={ this.handleInputChange }
+                />
+                <button
+                  type="button"
+                  disabled={ disabled }
+                  onClick={ this.handleButtonClick }
+                >
+                  Join
+                </button>
+              </>
+            )
+          }
+
+        </div>
+      </section>
     );
   }
 }

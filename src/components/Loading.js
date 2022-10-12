@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 
+import '../styles/Loading.scss';
+
 class Loading extends Component {
   render() {
-    return <p>Carregando...</p>;
+    return (
+      <div className="loading">
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    );
   }
 }
 
