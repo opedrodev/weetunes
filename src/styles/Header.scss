@@ -1,0 +1,56 @@
+.header {
+  height: 100vh;
+  padding: 3.2rem 6.4rem;
+  background-color: var(--background-shade);
+  box-shadow: 0 0 1.6rem 0 rgba(0, 0, 0, 0.25);
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: 64px;
+
+  &__logo {
+    height: 6.4rem;
+    width: 6.4rem;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    a:link, a:visited {
+      font-size: 1.4rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--primary);
+
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    a:hover, a:active {
+      color: var(--primary-shade);
+    }
+
+    &--active {
+      color: var(--active) !important;
+    }
+  }
+
+  &__profile {
+    a:link, a:visited {
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--primary);
+  
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+  }
+}

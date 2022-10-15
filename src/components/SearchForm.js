@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { HiSearch } from 'react-icons/hi';
 
 class SearchForm extends Component {
   render() {
     const { search, handleInputChange, disabled, handleSearchButtonClick } = this.props;
 
     return (
-      <form>
+      <div className="search__main__search-form">
         <input
           type="text"
           name="search"
           id="search"
-          placeholder="Nome do Artista"
+          placeholder="Artist Name"
           autoComplete="off"
           value={ search }
           onChange={ handleInputChange }
-          data-testid="search-artist-input"
         />
 
         <button
           type="button"
           disabled={ disabled }
           onClick={ handleSearchButtonClick }
-          data-testid="search-artist-button"
         >
-          Pesquisar
+
+          <HiSearch />
         </button>
-      </form>
+      </div>
     );
   }
 }

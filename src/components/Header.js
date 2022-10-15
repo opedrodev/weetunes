@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { HiHeart, HiOutlineUserCircle, HiSearch } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+
+import logo from '../assets/weetunes-logo.png';
+import '../styles/Header.scss';
+import Loading from './Loading';
 
 class Header extends Component {
   constructor() {
     super();
+
     this.state = {
-      name: 'Carregando...',
+      name: '',
+      loading: true,
     };
   }
 
@@ -14,29 +21,64 @@ class Header extends Component {
     getUser().then((user) => {
       this.setState({
         name: user.name,
+        loading: false,
       });
     });
   }
 
   render() {
-    const { name } = this.state;
-    return (
-      <header data-testid="header-component">
-        <p data-testid="header-user-name">
-          {name}
-        </p>
+    const { name, loading } = this.state;
 
-        <ul>
-          <li>
-            <NavLink to="/search" data-testid="link-to-search">Pesquisar</NavLink>
-          </li>
-          <li>
-            <NavLink to="/favorites" data-testid="link-to-favorites">Favoritos</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile" data-testid="link-to-profile">Perfil</NavLink>
-          </li>
-        </ul>
+    return (
+      <header className="header">
+        <figure>
+          <NavLink to="/search">
+            <img src={ logo } alt="weetunes logo" className="header__logo" />
+          </NavLink>
+        </figure>
+
+        <nav className="header__nav">
+          <NavLink
+            to="/search"
+            activeClassName="header__nav--active"
+          >
+            <HiSearch />
+            Search
+
+          </NavLink>
+
+          <NavLink
+            to="/favorites"
+            activeClassName="header__nav--active"
+          >
+            <HiHeart />
+            Favorites
+
+          </NavLink>
+
+          <NavLink
+            to="/profile"
+            activeClassName="header__nav--active"
+          >
+            <HiOutlineUserCircle />
+            Perfil
+
+          </NavLink>
+        </nav>
+
+        {
+          loading ? <Loading />
+
+            : (
+              <div className="header__profile">
+                {/* <img src="" alt="" /> */}
+
+                <NavLink to="/profile">
+                  { name }
+                </NavLink>
+              </div>
+            )
+        }
       </header>
     );
   }
