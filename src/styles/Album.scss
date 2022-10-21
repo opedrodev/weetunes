@@ -1,0 +1,71 @@
+.Album {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  &__main {
+    padding: 3.2rem;
+    height: 100vh;
+    overflow-y: scroll;
+
+    .album {
+      width: fit-content;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-template-rows: repeat(2, auto);
+      gap: 1.6rem;
+      margin: 0 auto 6.4rem auto;
+
+      img {
+        grid-column: 1 / 2;
+        grid-row: 1 / -1;
+
+        height: 15rem;
+        border-radius: var(--border-radius);
+      }
+
+      h1 {
+        align-self: end;
+      }
+
+      h3 {
+        align-self: start;
+      }
+    }
+
+    .MusicCard {
+      background-color: var(--black);
+      border-radius: var(--border-radius);
+      padding: .8rem 1.6rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      justify-items: center;
+      margin: 0 auto;
+
+      svg {
+        height: 22px;
+        width: 22px;
+        color: var(--primary);
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+
+      p {
+        font-size: 1.6rem;
+        width: 90%;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

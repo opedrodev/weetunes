@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { HiHeart, HiOutlineHeart } from 'react-icons/hi';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
-import Loading from './Loading';
 import Audio from './Audio';
 
 class MusicCard extends Component {
@@ -9,7 +9,6 @@ class MusicCard extends Component {
     super();
 
     this.state = {
-      loading: false,
       checked: false,
     };
   }
@@ -18,20 +17,26 @@ class MusicCard extends Component {
     this.retrieveFavoriteSongs();
   }
 
-  handleFavoriteInputClick = () => {
+  /**
+   * Add or remove the song from the favorite songs list.
+   */
+  favoriteButtonClickHandler = () => {
     const { checked } = this.state;
     const { song } = this.props;
-    this.setState({ loading: true });
 
     if (checked) {
       removeSong(song)
-        .then(() => this.setState({ checked: false, loading: false }));
-    } else {
-      addSong(song)
-        .then(() => this.setState({ checked: true, loading: false }));
+        .then(() => this.setState({ checked: false }));
+      return;
     }
+
+    addSong(song)
+      .then(() => this.setState({ checked: true }));
   };
 
+  /**
+   * Retrieve the favorite songs list from the API.
+   */
   retrieveFavoriteSongs = async () => {
     const { song } = this.props;
     const res = await getFavoriteSongs();
@@ -45,34 +50,33 @@ class MusicCard extends Component {
   };
 
   render() {
-    const { loading, checked } = this.state;
-    const { song: { trackName, previewUrl, trackId } } = this.props;
-
-    if (loading) return <Loading />;
+    const { checked } = this.state;
+    const { song: { trackName, previewUrl }, onRemoveFavorite } = this.props;
 
     return (
-      <div>
-        { trackName }
-        <Audio previewUrl={ previewUrl } />
+      <div className="MusicCard">
+        <div
+          onClick={ onRemoveFavorite || this.favoriteButtonClickHandler }
+          aria-hidden
+        >
+          {checked ? <HiHeart /> : <HiOutlineHeart />}
+        </div>
 
-        <label htmlFor="favorite">
-          Favorita
-          <input
-            type="checkbox"
-            name="favorite"
-            id="favorite"
-            checked={ checked }
-            data-testid={ `checkbox-music-${trackId}` }
-            onChange={ this.handleFavoriteInputClick }
-          />
-        </label>
+        <p>{trackName}</p>
+
+        <Audio previewUrl={ previewUrl } />
       </div>
     );
   }
 }
 
+MusicCard.defaultProps = {
+  onRemoveFavorite: null,
+};
+
 MusicCard.propTypes = {
   song: PropTypes.instanceOf(Object).isRequired,
+  onRemoveFavorite: PropTypes.func,
 };
 
 export default MusicCard;

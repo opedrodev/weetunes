@@ -37,7 +37,6 @@ class Search extends Component {
 
     searchAlbumsAPI(search).then((response) => {
       if (response.length === 0) this.setState({ noResults: true });
-
       this.setState({ searchResults: response });
     });
 
@@ -47,10 +46,10 @@ class Search extends Component {
   render() {
     const { search, searched, disabled, searchResults, showInfo, noResults } = this.state;
     return (
-      <div className="search">
+      <div className="Search">
         <Header />
 
-        <main className="search__main">
+        <main className="Search__main">
           <SearchForm
             search={ search }
             disabled={ disabled }
@@ -59,21 +58,22 @@ class Search extends Component {
           />
 
           {!showInfo && (
-            <p className="search__main__no-search">
+            <p className="Search__main__no-results">
               You didn&apos;t search anything yet
             </p>
           )}
 
           {showInfo && (
-            <p className="search__main__results">
+            <p className="Search__main__results">
               Album results from:
               &nbsp;
               {searched}
             </p>
           )}
 
-          <div className="search__main__albums">
-            {noResults && searchResults.length === 0 ? <p>Nenhum álbum foi encontrado</p>
+          <div className="Search__main__albums">
+            {noResults && searchResults.length === 0
+              ? <p className="Search__main__no-results">No results for this search</p>
               : (
                 searchResults.map((item) => (
                   <Link

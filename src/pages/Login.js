@@ -47,9 +47,9 @@ class Login extends Component {
     const { disabled, loading } = this.state;
 
     return (
-      <section className="login">
-        <div className="login__card">
-          <div className="login__card__logo">
+      <section className="Login">
+        <div className="Login__card">
+          <div className="Login__card__logo">
             <img src={ logo } alt="trybetunes logo" />
             <h1>weeTunes</h1>
           </div>

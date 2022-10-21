@@ -1,0 +1,65 @@
+.Favorites {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100vh;
+
+  &__title {
+    text-align: center;
+    font-size: 3.2rem;
+    color: var(--primary);
+    margin-bottom: 6.4rem;
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+  }
+
+  main {
+    padding: 3.2rem;
+    overflow-y: scroll;
+
+    p {
+      font-size: 2rem;
+      color: gray;
+      text-align: center;
+    }
+
+    .MusicCard {
+      background-color: var(--black);
+      border-radius: var(--border-radius);
+      padding: .8rem 1.6rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      justify-items: center;
+      margin: 0 auto;
+  
+      svg {
+        height: 22px;
+        width: 22px;
+        color: var(--primary);
+        cursor: pointer;
+        transition: all 0.3s;
+  
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+  
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+  
+      p {
+        font-size: 1.6rem;
+        width: 90%;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+}

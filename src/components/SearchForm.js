@@ -7,7 +7,7 @@ class SearchForm extends Component {
     const { search, handleInputChange, disabled, handleSearchButtonClick } = this.props;
 
     return (
-      <div className="search__main__search-form">
+      <div className="Search__main__search-form">
         <input
           type="text"
           name="search"
