@@ -61,7 +61,7 @@ class Header extends Component {
             activeClassName="header__nav--active"
           >
             <HiOutlineUserCircle />
-            Perfil
+            Profile
 
           </NavLink>
         </nav>

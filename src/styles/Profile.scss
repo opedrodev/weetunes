@@ -1,0 +1,62 @@
+.Profile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  place-items: center;
+
+  &__container {
+    font-size: 1.6rem;
+    background-color: var(--background-shade);
+    width: 48rem;
+    padding: 3.2rem;
+    border-radius: var(--border-radius);
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 3.2rem;
+
+    img {
+      height: 128px;
+      width: 128px;
+      padding: 1rem;
+      border-radius: 50%;
+      justify-self: center;
+    }
+
+    a:link, a:visited {
+      color: var(--white);
+      text-decoration: none;
+      background-color: var(--primary);
+      padding: .8rem 1.6rem;
+      border-radius: var(--border-radius);
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      justify-self: center;
+
+      &:hover, &:active {
+        background-color: var(--primary-shade);
+      }
+    }
+
+    .label {
+      display: block;
+      color: gray;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+
+    .data {
+      div {
+        &:not(:last-child) {
+          margin-bottom: 1.6rem;
+        }
+      }
+    }
+
+    .description-container {
+      grid-column: 2 / 3;
+    }
+  }
+}
