@@ -1,0 +1,29 @@
+.NotFound {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.6rem;
+
+    p {
+      font-size: 3.2rem;
+      font-weight: 600;
+    }
+
+    a:link, a:visited {
+      color: var(--primary);
+      text-decoration: none;
+      text-align: center;
+      font-size: 1.6rem;
+
+      &:hover, &:active {
+        color: var(--primary-shade);
+      }
+    } 
+  }
+}
