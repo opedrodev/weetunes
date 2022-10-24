@@ -1,16 +1,7 @@
-# 🚧 README em construção 🚧
+# WEETUNES
 
-<!-- Olá, Tryber!
+An application capable of playing songs from the most varied bands and artists, creating a list of favorite songs and editing the profile of the user logged in.
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+<br />
 
-É essencial que você preencha esse documento por conta própria, ok?
-
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+<img src="./weetunes-demo.png" style="width: 100%" />
