@@ -23,7 +23,6 @@ class Profile extends Component {
   getUserData = async () => {
     const userData = await getUser();
     this.setState({ userData, loading: false });
-    console.log(userData);
   };
 
   render() {

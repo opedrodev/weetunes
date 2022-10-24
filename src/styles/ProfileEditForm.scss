@@ -1,0 +1,52 @@
+.ProfileEditForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  width: 40rem;
+  padding: 1.6rem;
+  background-color: var(--background-shade);
+  border-radius: var(--border-radius);
+
+  input, textarea {
+    background-color: var(--black);
+    color: var(--white);
+    padding: .8rem 1.6rem;
+    width: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    resize: none;
+
+    &:focus {
+      outline: .2rem solid var(--focus)
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 0.8rem 1.6rem;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--primary-shade);
+    }
+
+    &:disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: var(--primary);
+      }
+    }
+
+    &:focus {
+      outline: 0.3rem solid var(--focus);
+    }
+  }
+  
+}

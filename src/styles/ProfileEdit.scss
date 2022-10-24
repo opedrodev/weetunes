@@ -1,0 +1,14 @@
+.ProfileEdit {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  place-items: center;
+
+  .label {
+    display: block;
+    color: gray;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+}
